@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import About from './pages/About';
+import More from './pages/More';
+import Contact from './pages/Contact';
 
 function App() {
+  const [section, setSection] = useState("0vw");
+  
+  const scrollStyle = {
+    transform: `translateX(${section})`
+  };
+
+  const changeSection = (new_section) => {
+    setSection(new_section);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App__header">
+        <Nav section={section} changeSection={changeSection}/>
       </header>
+      <main className="App__body" style={scrollStyle}>
+        <Home />
+        <About />
+        <More />
+        <Contact />
+      </main>
     </div>
   );
 }

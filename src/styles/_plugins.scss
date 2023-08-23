@@ -1,0 +1,22 @@
+@mixin flex-x($justify,$align,$direction) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-col{
+    @include flex;
+    flex-direction: column;
+}
+
+@mixin flex-row{
+    @include flex;
+    flex-direction: row;
+}
